@@ -1,5 +1,4 @@
 import React, {useState, useEffect} from 'react'
-import { Link } from "react-router-dom"
 
 import CustomSelect from '../CustomSelect/CustomSelect'
 import UserListItem from '../UserListItem/UserListItem'
@@ -71,14 +70,7 @@ function UserList({setUserID}) {
             {loading && <LinearProgress />}
             <List>
                 {filteredUsers.map((user)=>(
-                    <Link 
-                        key={user.id}
-                        to={`/edit/${user.id}`} 
-                        style={{ textDecoration: 'none', color: "#000"}}
-                        onClick={()=>setUserID(user.id)}
-                    >
-                        <UserListItem user={user}/>
-                    </Link>
+                    <UserListItem key={user.id} user={user} setUserID={setUserID}/>
                 ))}
             </List>
         </article>
